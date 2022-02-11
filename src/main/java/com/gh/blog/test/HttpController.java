@@ -14,10 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 //사용자가 요청 -> 응답(Data)
 @RestController
 public class HttpController {
-
+		
+		private static final String TAG = "HttpControllerTest : ";
+		
+		@GetMapping("/http/lombok")
+		public String lombokTest() {
+			Member m = new Member(1, "gh", "123123", "sjkh1231@gmail.com");
+			System.out.println(TAG+"getter : "+m.getId());
+			m.setId(5000);
+			System.out.println(TAG+"setter : "+m.getId());
+			return "lombok 테스트 완료";
+		}
+		
 		@GetMapping("/http/get")
 		//@RequestParam으로 단일 건으로 받을 수도 있지만, MessageConverter가  Member 클래스로 매핑시켜 준다.
 		public String getTest(Member m) {
+			
 			return "get 요청:" + m.getId() + " , UserName : " + m.getUserName();
 		}
 		
