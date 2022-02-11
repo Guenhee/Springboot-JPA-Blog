@@ -19,10 +19,15 @@ public class HttpController {
 		
 		@GetMapping("/http/lombok")
 		public String lombokTest() {
-			Member m = new Member(1, "gh", "123123", "sjkh1231@gmail.com");
-			System.out.println(TAG+"getter : "+m.getId());
-			m.setId(5000);
-			System.out.println(TAG+"setter : "+m.getId());
+			Member m = Member.builder()
+												.userName("gh")
+												.password("123123")
+												.email("sjkh1231@gmail.com")
+												.id(1)
+												.build(); 
+			System.out.println(TAG+"getter : "+m.getUserName());
+			m.setUserName("yk");
+			System.out.println(TAG+"setter : "+m.getUserName());
 			return "lombok 테스트 완료";
 		}
 		
